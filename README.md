@@ -36,10 +36,18 @@ https://saicobys.github.io/presentation-templates/presentations/YYYY-MM-DD-topic
 presentation-templates/
 ├── template.html ← Base template (never modify)
 ├── presentations/
-│   ├── 2025-01-15-english-topic-example.html
+│   ├── 2025-01-12-example-presentation.html
+│   ├── 2025-01-12-anglerfish-bioluminescence.html
 │   └── [new presentations go here]
 └── README.md ← This file
 ```
+
+## 🌐 Live Presentations:
+- 🎣 **Anglerfish Bioluminescence**: [View Presentation](https://saicobys.github.io/presentation-templates/presentations/2025-01-12-anglerfish-bioluminescence.html)
+- 📚 **Example Presentation**: [View Presentation](https://saicobys.github.io/presentation-templates/presentations/2025-01-12-example-presentation.html)
+
+### 🔗 Base URL:
+All presentations are available at: `https://saicobys.github.io/presentation-templates/presentations/[filename].html`
 
 ## 🎨 Quick Customization:
 - **Add more slides**: Copy a slide div and paste before the controls
