@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bioluminescent Jellyfish Presentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a40 50%, #000428 100%);
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .slide {
+            background: linear-gradient(145deg, #1e1e3f 0%, #2a2a5a 100%);
+            width: 90vw;
+            max-width: 1200px;
+            height: 85vh;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,100,255,0.3);
+            border: 2px solid #00bfff;
+            padding: 60px;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            animation: slideIn 0.5s ease-in;
+            position: relative;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        h1 {
+            font-size: 3.5em;
+            color: #00ffff;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 0 0 20px #00ffff;
+            border-bottom: 3px solid #00bfff;
+            padding-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            color: #00bfff;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 0 0 15px #00bfff;
+        }
+
+        h3 {
+            font-size: 1.8em;
+            color: #87ceeb;
+            margin: 20px 0 15px 0;
+            text-shadow: 0 0 10px #87ceeb;
+        }
+
+        p, li {
+            font-size: 1.4em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #e6f3ff;
+        }
+
+        ul {
+            text-align: left;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #00ffff 0%, #0080ff 100%);
+            color: #000;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 0 15px #00ffff;
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 100;
+        }
+
+        button {
+            background: linear-gradient(145deg, #00bfff, #0080ff);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,191,255,0.4);
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,191,255,0.6);
+            background: linear-gradient(145deg, #00ffff, #00bfff);
+        }
+
+        button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .slide-number {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(145deg, #1e1e3f, #2a2a5a);
+            padding: 12px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: #00ffff;
+            box-shadow: 0 5px 15px rgba(0,191,255,0.3);
+            border: 2px solid #00bfff;
+            font-size: 1.1em;
+        }
+
+        .title-slide {
+            text-align: center;
+        }
+
+        .title-slide h1 {
+            font-size: 4em;
+            margin-bottom: 40px;
+        }
+
+        .subtitle {
+            font-size: 1.8em;
+            color: #87ceeb;
+            font-style: italic;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px #87ceeb;
+        }
+
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .jellyfish-emoji {
+            font-size: 8em;
+            margin: 30px 0;
+            text-shadow: 0 0 30px #00ffff;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .glow-text {
+            text-shadow: 0 0 20px currentColor;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px currentColor; }
+            to { text-shadow: 0 0 30px currentColor, 0 0 40px currentColor; }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <div class="slide-number">
+            <span id="currentSlide">1</span> / <span id="totalSlides">3</span>
+        </div>
+
+        <!-- Slide 1: Title -->
+        <div class="slide active title-slide">
+            <div class="center-content">
+                <h1 class="glow-text">Bioluminescent Jellyfish</h1>
+                <div class="jellyfish-emoji">🪼</div>
+                <p class="subtitle">Creatures That Produce Light</p>
+                <p style="margin-top: 40px; font-size: 1.3em;">Jacob Moronta (SaicoBys) - January 12, 2025</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Where it lives & what it looks like -->
+        <div class="slide">
+            <h2>Meet the Amazing Jellyfish!</h2>
+            <div class="center-content">
+                <h3>🌊 Where do they live?</h3>
+                <p>Jellyfish live in <span class="highlight">oceans all around the world</span>, from shallow coastal waters to the deepest parts of the sea!</p>
+
+                <h3>👁️ What do they look like?</h3>
+                <p>They have a <span class="highlight">bell-shaped body</span> that's mostly transparent, with long trailing tentacles underneath.</p>
+
+                <h3>✨ Fun Fact!</h3>
+                <p class="glow-text">Some jellyfish have been around for over <span class="highlight">500 million years</span> - they're older than dinosaurs! 🦕</p>
+            </div>
+        </div>
+
+        <!-- Slide 3: How & why they make light -->
+        <div class="slide">
+            <h2>The Magic of Light! ✨</h2>
+            <div class="center-content">
+                <h3>💡 How do they make light?</h3>
+                <p>Jellyfish use special proteins called <span class="highlight">luciferase</span> that mix with oxygen to create a chemical reaction that glows!</p>
+
+                <h3>🎯 Why do they make light?</h3>
+                <ul>
+                    <li><span class="highlight">Defense:</span> Scare away predators with bright flashes</li>
+                    <li><span class="highlight">Communication:</span> Signal to other jellyfish</li>
+                    <li><span class="highlight">Hunting:</span> Attract small fish and plankton to eat</li>
+                </ul>
+
+                <h3>🤯 Most Interesting Fact!</h3>
+                <p class="glow-text">The <span class="highlight">Crystal Jellyfish</span> helped scientists win a Nobel Prize! Its glow protein is now used in medical research to see inside living cells! 🔬</p>
+            </div>
+        </div>
+
+        <!-- Navigation Controls -->
+        <div class="controls">
+            <button id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
+            <button id="nextBtn" onclick="changeSlide(1)">Next →</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        document.getElementById('totalSlides').textContent = totalSlides;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+
+            document.getElementById('currentSlide').textContent = currentSlide + 1;
+
+            // Update button states
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function changeSlide(direction) {
+            const newSlide = currentSlide + direction;
+            if (newSlide >= 0 && newSlide < totalSlides) {
+                showSlide(newSlide);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+            if (e.key === 'Home') showSlide(0);
+            if (e.key === 'End') showSlide(totalSlides - 1);
+        });
+
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>
