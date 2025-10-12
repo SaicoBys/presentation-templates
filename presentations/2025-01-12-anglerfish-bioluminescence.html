@@ -229,6 +229,23 @@
             display: inline-block;
             margin: 0 10px;
         }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin: 20px auto;
+            border: 3px solid #e74c3c;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
     </style>
 </head>
 <body>
@@ -259,6 +276,15 @@
 
                 <h3>👀 What does it look like?</h3>
                 <p>They have a <span class="highlight">huge mouth with sharp teeth</span>, a round body, and most importantly - a glowing <span class="scary-text">fishing rod</span> on their head!</p>
+
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/ObgHN3pCQmM"
+                            title="Anglerfish Video"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                    </iframe>
+                </div>
 
                 <div class="fact-box">
                     <h3>🤯 Amazing Fact!</h3>
