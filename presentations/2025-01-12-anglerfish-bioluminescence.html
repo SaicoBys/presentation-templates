@@ -35,12 +35,13 @@
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             border: 3px solid #2c3e50;
-            padding: 60px;
+            padding: 40px;
             display: none;
             flex-direction: column;
             justify-content: center;
             animation: slideIn 0.5s ease-in;
             position: relative;
+            box-sizing: border-box;
         }
 
         .slide.active {
@@ -71,19 +72,21 @@
         }
 
         h3 {
-            font-size: 2em;
+            font-size: 1.8em;
             color: #e74c3c;
-            margin: 25px 0 20px 0;
+            margin: 20px 0 15px 0;
             font-weight: bold;
+            text-align: center;
         }
 
         p, li {
-            font-size: 1.4em;
-            line-height: 1.6;
-            margin-bottom: 25px;
+            font-size: 1.2em;
+            line-height: 1.5;
+            margin-bottom: 20px;
             text-align: center;
             color: #2c3e50;
             font-weight: 500;
+            word-wrap: break-word;
         }
 
         ul {
@@ -201,11 +204,14 @@
         .deep-sea {
             background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
             color: white;
-            padding: 20px;
+            padding: 15px;
             border-radius: 10px;
-            margin: 20px 0;
+            margin: 15px 0;
             border: 3px solid #e74c3c;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            max-width: 90%;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .deep-sea p {
@@ -217,9 +223,12 @@
         .fact-box {
             background: #ecf0f1;
             border-left: 5px solid #e74c3c;
-            padding: 20px;
-            margin: 20px 0;
+            padding: 15px;
+            margin: 15px 0;
             border-radius: 5px;
+            max-width: 90%;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .big-number {
@@ -230,21 +239,75 @@
             margin: 0 10px;
         }
 
-        .video-container {
-            position: relative;
-            width: 100%;
-            max-width: 400px;
-            margin: 20px auto;
-            border: 3px solid #e74c3c;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
         }
 
-        .video-container iframe {
+        .anglerfish-image {
+            max-width: 500px;
+            width: 95%;
+            height: auto;
+            border: 4px solid #e74c3c;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: block;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+
+        .anglerfish-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+        }
+
+        .anglerfish-image.fullscreen {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1.2);
+            max-width: 90vw;
+            max-height: 90vh;
+            z-index: 1000;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 300px;
-            border: none;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 999;
+            display: none;
+        }
+
+
+        .anglerfish-placeholder {
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            border: 4px solid #e74c3c;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .anglerfish-placeholder p {
+            color: white !important;
+            margin: 10px 0;
+        }
+
+        .image-caption {
+            font-size: 1em;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -260,8 +323,8 @@
                 <h1>The Anglerfish</h1>
                 <div class="fish-emoji">🎣</div>
                 <p class="subtitle">Nature's Living Fishing Rod</p>
-                <p style="margin-top: 40px; font-size: 1.4em; font-weight: bold;">Jacob Moronta (SaicoBys)</p>
-                <p style="font-size: 1.2em; color: #7f8c8d;">January 13, 2025</p>
+                <p style="margin-top: 40px; font-size: 1.4em; font-weight: bold;">Jacob Moronta</p>
+                <p style="font-size: 1.2em; color: #7f8c8d;">October 13, 2025</p>
             </div>
         </div>
 
@@ -277,14 +340,20 @@
                 <h3>👀 What does it look like?</h3>
                 <p>They have a <span class="highlight">huge mouth with sharp teeth</span>, a round body, and most importantly - a glowing <span class="scary-text">fishing rod</span> on their head!</p>
 
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/ObgHN3pCQmM"
-                            title="Anglerfish Video"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen>
-                    </iframe>
+                <div class="image-container">
+                    <img src="anglerfish.webp"
+                         class="anglerfish-image"
+                         alt="Deep sea anglerfish with bioluminescent lure"
+                         onclick="toggleFullscreen(this)"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="anglerfish-placeholder" style="display: none;">
+                        <div class="fish-emoji" style="font-size: 4em; margin: 20px 0;">🐟</div>
+                        <p><strong>Anglerfish with bioluminescent lure</strong></p>
+                        <p style="font-size: 0.9em; color: #666;">Deep sea predator with glowing fishing rod</p>
+                    </div>
+                    <p class="image-caption">Deep Sea Anglerfish<br>Click image to enlarge</p>
                 </div>
+
 
                 <div class="fact-box">
                     <h3>🤯 Amazing Fact!</h3>
@@ -306,6 +375,20 @@
                     <li><span class="highlight">Trap:</span> When fish come close to investigate the light, SNAP! The anglerfish eats them!</li>
                     <li><span class="highlight">Perfect Predator:</span> It's like having a fishing rod attached to your head!</li>
                 </ul>
+
+                <div class="image-container">
+                    <img src="anglerfish-lure.avif"
+                         class="anglerfish-image"
+                         alt="Anglerfish showing bioluminescent lure in action"
+                         onclick="toggleFullscreen(this)"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="anglerfish-placeholder" style="display: none;">
+                        <div class="fish-emoji" style="font-size: 4em; margin: 20px 0;">💡</div>
+                        <p><strong>Anglerfish Bioluminescent Lure</strong></p>
+                        <p style="font-size: 0.9em; color: #666;">The glowing fishing rod in action</p>
+                    </div>
+                    <p class="image-caption">Anglerfish Bioluminescent Lure in Action<br>Click image to enlarge</p>
+                </div>
 
                 <div class="fact-box">
                     <h3>🔬 Most Incredible Fact!</h3>
@@ -357,6 +440,38 @@
 
         // Initialize
         showSlide(0);
+
+        // Image fullscreen functionality
+        function toggleFullscreen(img) {
+            const overlay = document.getElementById('imageOverlay') || createOverlay();
+
+            if (img.classList.contains('fullscreen')) {
+                // Exit fullscreen
+                img.classList.remove('fullscreen');
+                overlay.style.display = 'none';
+                document.body.style.overflow = 'hidden';
+            } else {
+                // Enter fullscreen
+                img.classList.add('fullscreen');
+                overlay.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+
+                // Click overlay to close
+                overlay.onclick = function() {
+                    img.classList.remove('fullscreen');
+                    overlay.style.display = 'none';
+                    document.body.style.overflow = 'hidden';
+                };
+            }
+        }
+
+        function createOverlay() {
+            const overlay = document.createElement('div');
+            overlay.id = 'imageOverlay';
+            overlay.className = 'overlay';
+            document.body.appendChild(overlay);
+            return overlay;
+        }
     </script>
 </body>
 </html>
