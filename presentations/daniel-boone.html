@@ -35,20 +35,17 @@
             border-radius: 10px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             padding: 60px;
-            display: none;
+            display: flex;
             flex-direction: column;
             justify-content: center;
             animation: slideIn 0.5s ease-in;
             position: relative;
-        }
-
-        .slide.active {
-            display: flex;
+            overflow-y: auto;
         }
 
         @keyframes slideIn {
-            from { opacity: 0; transform: translateX(30px); }
-            to { opacity: 1; transform: translateX(0); }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         h1 {
@@ -60,125 +57,27 @@
             padding-bottom: 20px;
         }
 
-        h2 {
-            font-size: 2.2em;
-            color: #34495e;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        h3 {
-            font-size: 1.8em;
-            color: #8B4513;
-            margin: 20px 0 15px 0;
-        }
-
-        p, li {
-            font-size: 1.3em;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        ul {
-            text-align: left;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .highlight {
-            background: linear-gradient(120deg, #f4e4a0 0%, #d4af37 100%);
-            padding: 5px 15px;
-            border-radius: 5px;
-            font-weight: bold;
-            color: #2c3e50;
-        }
-
-        .controls {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 20px;
-            z-index: 100;
-        }
-
-        button {
-            background: #8B4513;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 25px;
-            font-size: 1.1em;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            font-weight: bold;
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            background: #A0522D;
-        }
-
-        button:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .slide-number {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            background: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-weight: bold;
-            color: #2c3e50;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            font-size: 1.1em;
-        }
-
-        .title-slide {
-            text-align: center;
-        }
-
-        .title-slide h1 {
-            font-size: 4em;
-            margin-bottom: 40px;
-        }
-
         .subtitle {
-            font-size: 1.5em;
+            font-size: 1.3em;
             color: #7f8c8d;
             font-style: italic;
+            text-align: center;
             margin-bottom: 30px;
-        }
-
-        .center-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
         }
 
         .two-column {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
             margin-top: 20px;
             align-items: start;
         }
 
         .portrait-img {
             width: 100%;
-            max-width: 350px;
+            max-width: 400px;
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             margin: 0 auto;
             display: block;
         }
@@ -190,30 +89,40 @@
 
         .info-list li {
             text-align: left;
-            margin-bottom: 25px;
-            padding-left: 15px;
-            border-left: 4px solid #8B4513;
+            margin-bottom: 20px;
             padding: 15px;
+            border-left: 4px solid #8B4513;
             background: #f8f9fa;
             border-radius: 5px;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #f4e4a0 0%, #d4af37 100%);
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #2c3e50;
         }
 
         .video-box {
             background: #e8f4f8;
-            padding: 25px;
+            padding: 20px;
             border-radius: 10px;
             margin-top: 20px;
             text-align: center;
+            grid-column: 1 / -1;
         }
 
         .video-link {
             display: inline-block;
             background: #8B4513;
             color: white;
-            padding: 15px 30px;
+            padding: 12px 25px;
             border-radius: 8px;
             text-decoration: none;
-            font-size: 1.1em;
+            font-size: 1em;
             transition: all 0.3s ease;
             margin-top: 10px;
         }
@@ -221,14 +130,7 @@
         .video-link:hover {
             background: #A0522D;
             transform: translateY(-2px);
-        }
-
-        .frontier-text {
-            text-align: justify;
-            font-size: 1.2em;
-            line-height: 1.8;
-            max-width: 1000px;
-            margin: 0 auto;
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
         }
 
         @media (max-width: 968px) {
@@ -236,38 +138,28 @@
                 grid-template-columns: 1fr;
             }
             h1 {
-                font-size: 2.5em !important;
+                font-size: 2.2em;
             }
             .slide {
                 padding: 30px;
+            }
+            .info-list li {
+                font-size: 1em;
             }
         }
     </style>
 </head>
 <body>
     <div class="presentation">
-        <div class="slide-number">
-            <span id="currentSlide">1</span> / <span id="totalSlides">3</span>
-        </div>
-
-        <!-- Slide 1: Title -->
-        <div class="slide active title-slide">
-            <div class="center-content">
-                <h1>DANIEL BOONE</h1>
-                <p class="subtitle">"The Pathfinder of the American Frontier"</p>
-                <p style="margin-top: 40px; font-size: 1.2em;">American History - October 2025</p>
-            </div>
-        </div>
-
-        <!-- Slide 2: Who, What, Where, When, Why -->
         <div class="slide">
-            <h2>Who Was Daniel Boone?</h2>
+            <h1>DANIEL BOONE</h1>
+            <p class="subtitle">"The Pathfinder of the American Frontier"</p>
+
             <div class="two-column">
                 <div>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Db1.jpg/400px-Db1.jpg"
+                    <img src="daniel-boone.jpg"
                          alt="Daniel Boone Portrait"
-                         class="portrait-img"
-                         onerror="this.src='https://via.placeholder.com/400x500/8B4513/FFFFFF?text=Daniel+Boone'">
+                         class="portrait-img">
                 </div>
                 <div>
                     <ul class="info-list">
@@ -278,77 +170,18 @@
                         <li><span class="highlight">WHY FAMOUS:</span> Opened the American frontier to westward expansion, symbolizing the pioneer spirit and American courage.</li>
                     </ul>
                 </div>
-            </div>
-            <div class="video-box">
-                <strong style="font-size: 1.2em;">🎬 Daniel Boone in Media</strong>
-                <p style="margin: 10px 0;">TV Series (1964-1970) starring Fess Parker</p>
-                <a href="https://www.youtube.com/watch?v=XW4YQMbAsXg"
-                   target="_blank"
-                   class="video-link">
-                    ▶ Watch Clip (Theme Song & Intro)
-                </a>
-            </div>
-        </div>
 
-        <!-- Slide 3: Frontier Influence -->
-        <div class="slide">
-            <h2>The Frontier's Influence on Modern America</h2>
-            <div class="center-content">
-                <p class="frontier-text">
-                    The American Frontier has profoundly shaped modern American identity and culture. The "frontier spirit" of <strong>individualism, self-reliance, and determination</strong> remains central to American values today. Heroes like Daniel Boone embodied the idea that anyone could forge their own path and create opportunities through hard work and courage—a concept that evolved into the <strong>"American Dream."</strong>
-                </p>
-                <p class="frontier-text" style="margin-top: 20px;">
-                    The frontier experience fostered <strong>innovation, resourcefulness, and democratic ideals</strong>, as frontier communities often governed themselves with limited external authority. This legacy influences modern American entrepreneurship, the celebration of personal freedom, and the cultural narrative of overcoming challenges.
-                </p>
-                <p class="frontier-text" style="margin-top: 20px;">
-                    The frontier mythology, perpetuated through Western films and literature, continues to shape how Americans view their national character: as <strong>pioneers, risk-takers, and believers in unlimited possibility</strong>. The westward expansion established patterns of mobility and reinvention that characterize American society today.
-                </p>
+                <div class="video-box">
+                    <strong style="font-size: 1.2em;">🎬 Daniel Boone in Media</strong>
+                    <p style="margin: 10px 0;">TV Series (1964-1970) starring Fess Parker</p>
+                    <a href="https://www.youtube.com/watch?v=XW4YQMbAsXg"
+                       target="_blank"
+                       class="video-link">
+                        ▶ Watch Clip (Theme Song & Intro)
+                    </a>
+                </div>
             </div>
-        </div>
-
-        <!-- Navigation Controls -->
-        <div class="controls">
-            <button id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
-            <button id="nextBtn" onclick="changeSlide(1)">Next →</button>
         </div>
     </div>
-
-    <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const totalSlides = slides.length;
-
-        document.getElementById('totalSlides').textContent = totalSlides;
-
-        function showSlide(n) {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (n + totalSlides) % totalSlides;
-            slides[currentSlide].classList.add('active');
-
-            document.getElementById('currentSlide').textContent = currentSlide + 1;
-
-            // Update button states
-            document.getElementById('prevBtn').disabled = currentSlide === 0;
-            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
-        }
-
-        function changeSlide(direction) {
-            const newSlide = currentSlide + direction;
-            if (newSlide >= 0 && newSlide < totalSlides) {
-                showSlide(newSlide);
-            }
-        }
-
-        // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowLeft') changeSlide(-1);
-            if (e.key === 'ArrowRight') changeSlide(1);
-            if (e.key === 'Home') showSlide(0);
-            if (e.key === 'End') showSlide(totalSlides - 1);
-        });
-
-        // Initialize
-        showSlide(0);
-    </script>
 </body>
 </html>
